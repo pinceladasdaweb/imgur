@@ -1,3 +1,15 @@
+/*
+--------------------------------
+imgur Upload
+--------------------------------
++ https://github.com/pinceladasdaweb/imgur-upload
++ version 1.0
++ Copyright 2013 Pedro Rogerio
++ Licensed under the MIT license
+
++ Documentation: https://github.com/pinceladasdaweb/imgur-upload
+*/
+
 var Imgur = (function (d) {
     "use strict";
     /*jslint browser: true*/
