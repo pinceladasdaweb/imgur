@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>imgur Upload API</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <style>
+        .col-md {
+            margin: 0 auto;
+            width: 320px;
+        }
+        .col-lg {
+            float: left;
+            width: 240px;
+        }
+        .fileUpload {
+            position: relative;
+            overflow: hidden;
+        }
+        .fileUpload input {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            filter: alpha(opacity=0);
+        }
+        .status {
+            clear: both;
+            color: #9F0000;
+            font-size: 16px;
+            padding: 10px 0 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="jumbotron">
+        <h1>imgur Upload API</h1>
+        <p>Upload images to imgur via JavaScript</p>
+    </div>
+
+    <div class="col-md">
+        <div class="col-lg">
+            <input class="form-control" id="uploadFile" type="text" placeholder="Choose File" disabled>
+        </div>
+        <div class="pull-right fileUpload btn btn-primary">
+            <span>Upload</span>
+            <input type="file" class="upload" id="uploadBtn">
+        </div>
+        <div class="status"></div>
+    </div>
+
+    <script type="text/javascript" src="assets/js/app.js"></script>
+    <script>
+        (function() {
+            Imgur.init();
+        }());
+    </script>
+</body>
+</html>
