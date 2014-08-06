@@ -65,9 +65,9 @@ var Imgur = (function (d) {
             }, false);
         },
         upload: function (file) {
-            var xhttp    = module.xhr(),
+            var self     = this,
+                xhttp    = self.xhr(),
                 status   = d.querySelector('.status'),
-                self     = this,
                 fd       = new FormData();
 
             fd.append('image', file);
