@@ -54,11 +54,14 @@
         <div class="status"></div>
     </div>
 
-    <script type="text/javascript" src="assets/js/app.js"></script>
+    <script type="text/javascript" src="assets/js/require.min.js" data-main="assets/js/main"></script>
+
+    <!-- If you want use without RequireJs
+    <script src="assets/js/app.js"></script>
     <script>
-        (function() {
-            Imgur.init();
-        }());
+        Imgur();
     </script>
+    -->
+
 </body>
 </html>
