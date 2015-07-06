@@ -7,13 +7,13 @@ Upload images to Imgur via JavaScript.
 
 Ĺoad RequireJs on your html file.
 
-´´´html
+```html
 <script type="text/javascript" src="path/to/require.js" data-main="path/to/your/main"></script>
-´´´
+```
 
 Where main.js is like:
 
-´´´js
+```js
 requirejs.config({
 	paths: {
 		app: 'app'
@@ -25,23 +25,23 @@ requirejs(['app'], function( Imgur ){
 	Imgur.init();
 
 });
-´´´
+```
 
 ##How to use without RequireJs
 
 Load the app.js file on your html
 
-´´´html
+```html
 <script src="assets/js/app.js"></script>
-´´´
+```
 
 Then call the function
 
-´´´html
+```html
 <script>
 	Imgur();
 </script>
-´´´
+```
 
 ##Important Note
 
