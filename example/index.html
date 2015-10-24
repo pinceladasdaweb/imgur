@@ -4,6 +4,7 @@
     <title>imgur Upload API</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="../build/imgur.min.css" rel="stylesheet" media="screen">
     <style>
         .jumbotron h1, .jumbotron p {
             padding-left: 60px;
@@ -13,32 +14,6 @@
         .col-md {
             margin: 0 auto;
             max-width: 500px
-        }
-
-        .dropzone {
-            border: 4px dashed #ccc;
-            height: 200px;
-            margin: 0 10px;
-            position: relative;
-            width: auto;
-        }
-
-        .dropzone p {
-            height: 100%;
-            line-height: 200px;
-            margin: 0;
-            text-align: center;
-            width: 100%;
-        }
-
-        .dropzone input[type="file"] {
-            height: 100%;
-            left: 0;
-            outline: none;
-            opacity: 0;
-            position: absolute;
-            top: 0;
-            width: 100%;
         }
     </style>
 </head>
@@ -56,7 +31,8 @@
     <script type="text/javascript">
         var feedback = function (res) {
             if (res.success === true) {
-                console.log(res.data.link);
+                document.querySelector('.status').classList.add('bg-success');
+                document.querySelector('.status').innerHTML = 'Image url: ' + res.data.link;
             }
         };
 
