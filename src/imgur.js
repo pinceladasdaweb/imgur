@@ -45,17 +45,8 @@
             }
             return el;
         },
-        createDragZone: function () {
-            var p, input;
-
-            p     = this.createEls('p', {}, 'Drag your files here or click in this area.');
-            input = this.createEls('input', {type: 'file', accept: 'image/*'});
-
-            Array.prototype.forEach.call(this.dropzone, function (zone) {
-                zone.appendChild(p);
-                zone.appendChild(input);
-                this.upload(zone);
-            }.bind(this));
+        insertAfter: function (referenceNode, newNode) {
+            referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
         },
         post: function (path, data, callback) {
             var xhttp = new XMLHttpRequest();
@@ -80,30 +71,67 @@
             xhttp.send(data);
             xhttp = null;
         },
+        createDragZone: function () {
+            var p, input;
+
+            p     = this.createEls('p', {}, 'Drag your files here or click in this area.');
+            input = this.createEls('input', {type: 'file', accept: 'image/*'});
+
+            Array.prototype.forEach.call(this.dropzone, function (zone) {
+                zone.appendChild(p);
+                zone.appendChild(input);
+                this.status(zone);
+                this.upload(zone);
+            }.bind(this));
+        },
+        loading: function () {
+            var div = this.createEls('div', {className: 'loading-modal'});
+            document.body.appendChild(div);
+        },
+        status: function (el) {
+            var div = this.createEls('div', {className: 'status'});
+
+            this.insertAfter(el, div);
+        },
+        matchFiles: function (file) {
+            if (file.type.match(/image/)) {
+                document.body.classList.add('busy');
+                document.querySelector('.status').classList.remove('bg-success', 'bg-danger');
+                document.querySelector('.status').innerHTML = '';
+
+                var fd = new FormData();
+                fd.append('image', file);
+
+                this.post(this.endpoint, fd, function (data) {
+                    document.body.classList.remove('busy');
+                    this.callback(data);
+                }.bind(this));
+            } else {
+                document.querySelector('.status').classList.remove('bg-success');
+                document.querySelector('.status').classList.add('bg-danger');
+                document.querySelector('.status').innerHTML = 'Invalid archive';
+            }
+        },
         upload: function (zone) {
-            var file, formData, target, i, len;
+            var file, target, i, len;
 
             zone.addEventListener('change', function (e) {
-                if (e.target && e.target.nodeName === 'INPUT') {
+                if (e.target && e.target.nodeName === 'INPUT' && e.target.type === 'file') {
                     target = e.target.files;
 
                     for (i = 0, len = target.length; i < len; i += 1) {
                         file = target[i];
-                        if (file.type.match(/image/)) {
-                            formData = new FormData();
-                            formData.append('image', file);
-
-                            this.post(this.endpoint, formData, function (data) {
-                                this.callback(data);
-                            }.bind(this));
-                        } else {
-
-                        }
+                        this.matchFiles(file);
                     }
                 }
             }.bind(this), false);
         },
         run: function () {
+            var loadingModal = document.querySelector('.loading-modal');
+
+            if (!loadingModal) {
+                this.loading();
+            }
             this.createDragZone();
         }
     };
