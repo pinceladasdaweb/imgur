@@ -1,0 +1,47 @@
+.dropzone {
+    border: 4px dashed #ccc;
+    height: 200px;
+    margin: 0 10px;
+    position: relative;
+    width: auto;
+}
+
+.dropzone p {
+    height: 100%;
+    line-height: 200px;
+    margin: 0;
+    text-align: center;
+    width: 100%;
+}
+
+.dropzone input[type="file"] {
+    height: 100%;
+    left: 0;
+    outline: none;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.dropzone + .status {
+    border-radius: 5px;
+    margin: 10px 10px 0;
+    padding: 15px;
+    text-align: center;
+}
+
+.loading-modal {
+    background: rgba( 255, 255, 255, .8 ) url('svg/loading-spin.svg') no-repeat center center;
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+body.busy .loading-modal {
+    display: block;
+}
