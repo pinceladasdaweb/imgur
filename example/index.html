@@ -3,37 +3,42 @@
 <head>
     <title>imgur Upload API</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <style>
+        .jumbotron h1, .jumbotron p {
+            padding-left: 60px;
+            padding-right: 60px;
+        }
+
         .col-md {
             margin: 0 auto;
-            width: 320px;
+            max-width: 500px
         }
-        .col-lg {
-            float: left;
-            width: 240px;
-        }
-        .fileUpload {
+
+        .dropzone {
+            border: 4px dashed #ccc;
+            height: 200px;
+            margin: 0 10px;
             position: relative;
-            overflow: hidden;
+            width: auto;
         }
-        .fileUpload input {
+
+        .dropzone p {
+            height: 100%;
+            line-height: 200px;
+            margin: 0;
+            text-align: center;
+            width: 100%;
+        }
+
+        .dropzone input[type="file"] {
+            height: 100%;
+            left: 0;
+            outline: none;
+            opacity: 0;
             position: absolute;
             top: 0;
-            right: 0;
-            margin: 0;
-            padding: 0;
-            font-size: 20px;
-            cursor: pointer;
-            opacity: 0;
-            filter: alpha(opacity=0);
-        }
-        .status {
-            clear: both;
-            color: #9F0000;
-            font-size: 16px;
-            padding: 10px 0 0;
-            text-align: center;
+            width: 100%;
         }
     </style>
 </head>
@@ -44,24 +49,21 @@
     </div>
 
     <div class="col-md">
-        <div class="col-lg">
-            <input class="form-control" id="uploadFile" type="text" placeholder="Choose File" disabled>
-        </div>
-        <div class="pull-right fileUpload btn btn-primary">
-            <span>Upload</span>
-            <input type="file" accept="image/*" class="upload" id="uploadBtn">
-        </div>
-        <div class="status"></div>
+        <div class="dropzone"></div>
     </div>
 
-    <script type="text/javascript" src="assets/js/require.min.js" data-main="assets/js/main"></script>
+    <script type="text/javascript" src="../build/imgur.min.js"></script>
+    <script type="text/javascript">
+        var feedback = function (res) {
+            if (res.success === true) {
+                console.log(res.data.link);
+            }
+        };
 
-    <!-- If you want use without RequireJs
-    <script src="assets/js/app.js"></script>
-    <script>
-        Imgur();
+        new Imgur({
+            clientid: 'cc86a8de0e7c459',
+            callback: feedback
+        });
     </script>
-    -->
-
 </body>
 </html>
