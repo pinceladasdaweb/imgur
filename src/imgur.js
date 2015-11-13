@@ -85,7 +85,12 @@
             }.bind(this));
         },
         loading: function () {
-            var div = this.createEls('div', {className: 'loading-modal'});
+            var div, img;
+
+            div = this.createEls('div', {className: 'loading-modal'});
+            img = this.createEls('img', {className: 'loading-image', src: './svg/loading-spin.svg'});
+
+            div.appendChild(img);
             document.body.appendChild(div);
         },
         status: function (el) {
@@ -93,11 +98,13 @@
 
             this.insertAfter(el, div);
         },
-        matchFiles: function (file) {
-            if (file.type.match(/image/)) {
+        matchFiles: function (file, zone) {
+            var status = zone.nextSibling;
+
+            if (file.type.match(/image/) && file.type !== 'image/svg+xml') {
                 document.body.classList.add('busy');
-                document.querySelector('.status').classList.remove('bg-success', 'bg-danger');
-                document.querySelector('.status').innerHTML = '';
+                status.classList.remove('bg-success', 'bg-danger');
+                status.innerHTML = '';
 
                 var fd = new FormData();
                 fd.append('image', file);
@@ -107,9 +114,9 @@
                     this.callback(data);
                 }.bind(this));
             } else {
-                document.querySelector('.status').classList.remove('bg-success');
-                document.querySelector('.status').classList.add('bg-danger');
-                document.querySelector('.status').innerHTML = 'Invalid archive';
+                status.classList.remove('bg-success');
+                status.classList.add('bg-danger');
+                status.innerHTML = 'Invalid archive';
             }
         },
         upload: function (zone) {
@@ -121,7 +128,7 @@
 
                     for (i = 0, len = target.length; i < len; i += 1) {
                         file = target[i];
-                        this.matchFiles(file);
+                        this.matchFiles(file, zone);
                     }
                 }
             }.bind(this), false);
