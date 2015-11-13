@@ -32,7 +32,7 @@
 }
 
 .loading-modal {
-    background: rgba( 255, 255, 255, .8 ) url('svg/loading-spin.svg') no-repeat center center;
+    background-color: rgba( 255, 255, 255, .8 );
     display: none;
     position: fixed;
     z-index: 1000;
@@ -40,6 +40,13 @@
     left: 0;
     height: 100%;
     width: 100%;
+}
+
+.loading-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -16px 0 0 -16px
 }
 
 body.busy .loading-modal {
