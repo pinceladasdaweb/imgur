@@ -1,7 +1,7 @@
 {
     "name": "imgur",
     "description": "Upload images to imgur via JavaScript",
-    "version": "2.0.1",
+    "version": "2.0.2",
     "private": true,
     "author": "Pedro Rogério",
     "scripts": {
@@ -12,7 +12,7 @@
         "grunt-contrib-watch": "~0.6.1",
         "grunt-contrib-copy": "~0.8.2",
         "grunt-contrib-cssmin": "~0.14.0",
-        "grunt-contrib-uglify": "~0.9.2"
+        "grunt-contrib-uglify": "~0.11.0"
     },
     "repository": "https://github.com/pinceladasdaweb/imgur",
     "bugs": {
