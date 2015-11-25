@@ -55,7 +55,7 @@
             xhttp.setRequestHeader('Authorization', 'Client-ID ' + this.clientid);
             xhttp.onreadystatechange = function () {
                 if (this.readyState === 4) {
-                    if (this.status >= 200 && this.status < 400) {
+                    if (this.status >= 200 && this.status < 300) {
                         var response = '';
                         try {
                             response = JSON.parse(this.responseText);
