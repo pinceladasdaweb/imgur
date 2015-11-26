@@ -26,7 +26,7 @@
 
         this.clientid = options.clientid;
         this.endpoint = 'https://api.imgur.com/3/image';
-        this.callback = options.callback || function () {};
+        this.callback = options.callback || undefined;
         this.dropzone = document.querySelectorAll('.dropzone');
 
         this.run();
@@ -111,7 +111,7 @@
 
                 this.post(this.endpoint, fd, function (data) {
                     document.body.classList.remove('busy');
-                    this.callback(data);
+                    typeof this.callback === 'function' && this.callback.call(this, data);
                 }.bind(this));
             } else {
                 status.classList.remove('bg-success');
