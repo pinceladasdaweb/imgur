@@ -20,7 +20,7 @@ The script depends on the following HTML markup:
 Add the following css before your ```</head>``` tag:
 
 ```html
-<script src="path/to/imgur.min.css"></script>
+<link href="path/to/imgur.min.css" rel="stylesheet" media="screen">
 ```
 
 Add the following javascript before your ```</body>``` tag:
