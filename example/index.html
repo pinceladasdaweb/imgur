@@ -31,8 +31,15 @@
     <script type="text/javascript">
         var feedback = function (res) {
             if (res.success === true) {
-                document.querySelector('.status').classList.add('bg-success');
-                document.querySelector('.status').innerHTML = 'Image url: ' + res.data.link;
+                var status = document.querySelector('.status');
+                var p = document.createElement('p');
+                var t = document.createTextNode('Image url: ' + res.data.link);
+
+                p.appendChild(t);
+
+                status.classList.add('bg-success');
+                status.appendChild(p);
+                // document.querySelector('.status').innerHTML = 'Image url: ' + res.data.link;
             }
         };
 
