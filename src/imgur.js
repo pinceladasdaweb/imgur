@@ -75,7 +75,7 @@
             var p, input;
 
             p     = this.createEls('p', {}, 'Drag your files here or click in this area.');
-            input = this.createEls('input', {type: 'file', accept: 'image/*'});
+            input = this.createEls('input', {type: 'file', multiple: 'multiple', accept: 'image/*'});
 
             Array.prototype.forEach.call(this.dropzone, function (zone) {
                 zone.appendChild(p);
