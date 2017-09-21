@@ -1,7 +1,7 @@
 {
     "name": "imgur",
     "description": "Upload images to imgur via JavaScript",
-    "version": "2.0.4",
+    "version": "2.1.0",
     "private": true,
     "author": "Pedro Rogério",
     "scripts": {
@@ -18,8 +18,10 @@
     "bugs": {
         "url": "https://github.com/pinceladasdaweb/imgur/issues"
     },
-    "licenses": [{
-        "type": "MIT",
-        "url": "http://opensource.org/licenses/MIT"
-    }]
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "http://opensource.org/licenses/MIT"
+        }
+    ]
 }
