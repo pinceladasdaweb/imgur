@@ -64,7 +64,7 @@ The script expect the following values:
 
 | Value                              | Description                                                 |
 | ---------------------------------- |:-----------------------------------------------------------:|
-| **clientid**                       | Your Client-ID. Get here [http://api.imgur.com/](http://api.imgur.com/)|
+| **clientid**                       | Your Client-ID. Get here [https://api.imgur.com](https://api.imgur.com)|
 | **callback**                       | Calllback to run after the success upload                   |
 
 ##Browser Support
