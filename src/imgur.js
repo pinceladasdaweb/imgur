@@ -21,7 +21,7 @@
         }
 
         if (!options.clientid) {
-            throw 'Provide a valid Client Id here: http://api.imgur.com/';
+            throw 'Provide a valid Client Id here: https://apidocs.imgur.com/';
         }
 
         this.clientid = options.clientid;
